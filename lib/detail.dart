@@ -48,6 +48,10 @@ class _DetailPageState extends State<DetailPage> {
   void onPressedComment(){
     String comment = commentController.text;
     if(comment.isEmpty) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('comment must not empty!')));
+    setState(() {
+      comments.add(Comment(comment: comment, profile: 'assets/profile.jfif'));
+      print(comments);
+    });
   }
 
   @override
@@ -138,6 +142,7 @@ class _DetailPageState extends State<DetailPage> {
                     itemCount: comments.length,
                     itemBuilder: (context, index) {
                       return Row(
+                        
                         children: [
                           Container(
                             margin: const EdgeInsets.all(10),
